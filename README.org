@@ -1,0 +1,31 @@
+#+title: Lite System + Emacs Overlay
+
+#+begin_src sh
+nix run nix-darwin -- --flake "$PWD" build
+#+end_src
+
+#+begin_example
+building the system configuration...
+error:
+       … while evaluating the attribute 'optionalValue.value'
+
+         at /nix/store/cjvwy2rr87ir1nb6wvs9n6lvbnzlqrdg-source/lib/modules.nix:854:5:
+
+          853|
+          854|     optionalValue =
+             |     ^
+          855|       if isDefined then { value = mergedValue; }
+
+       … while evaluating a branch condition
+
+         at /nix/store/cjvwy2rr87ir1nb6wvs9n6lvbnzlqrdg-source/lib/modules.nix:855:7:
+
+          854|     optionalValue =
+          855|       if isDefined then { value = mergedValue; }
+             |       ^
+          856|       else {};
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: value is null while a set was expected
+#+end_example
