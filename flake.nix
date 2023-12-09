@@ -1,4 +1,27 @@
 {
+  outputs = inputs @ { flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } ({ inputs, ... }: {
+      imports = [
+        inputs.lite-system.flakeModule
+      ];
+
+      config.lite-system = {
+        nixpkgs = {
+          overlays = [ inputs.emacs-overlay.overlays.emacs ];
+        };
+
+        systemModule = ./system;
+        homeModule = ./home;
+        hostModuleDir = ./host;
+
+        hosts = {
+          example = {
+            system = "aarch64-darwin";
+          };
+        };
+      };
+    });
+
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -23,26 +46,4 @@
     };
   };
 
-  outputs = inputs @ { flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ inputs, ... }: {
-      imports = [
-        inputs.lite-system.flakeModule
-      ];
-
-      config.lite-system = {
-        nixpkgs = {
-          overlays = [ inputs.emacs-overlay.overlays.emacs ];
-        };
-
-        systemModule = ./system;
-        homeModule = ./home;
-        hostModuleDir = ./host;
-
-        hosts = {
-          example = {
-            system = "aarch64-darwin";
-          };
-        };
-      };
-    });
 }
