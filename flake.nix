@@ -31,13 +31,7 @@
 
       config.lite-system = {
         nixpkgs = {
-          config = {
-            allowUnfree = true;
-          };
-
-          overlays = [
-            inputs.emacs-overlay.overlays.emacs
-          ];
+          overlays = [ inputs.emacs-overlay.overlays.emacs ];
         };
 
         systemModule = ./system;
