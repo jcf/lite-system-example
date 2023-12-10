@@ -1,5 +1,7 @@
 #+title: Lite System + Emacs Overlay
 
+https://github.com/yelite/lite-system/issues/2
+
 #+begin_src sh
 nix run nix-darwin -- --flake "$PWD" build
 #+end_src
