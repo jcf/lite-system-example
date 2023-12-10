@@ -1,5 +1,25 @@
 #+title: Lite System + Emacs Overlay
 
+* Contents                                                              :TOC:
+- [[#home-modules][Home modules]]
+- [[#emacs-overlay][Emacs overlay]]
+
+* Home modules
+#+begin_src sh
+nix run nix-darwin -- --flake "$PWD" build
+#+end_src
+
+The system =zsh= module adds ZSH to file:./result, but the home =git= module
+does not.
+
+#+begin_src sh :dir result :exports both
+fd --type executable --follow '^(git|zsh)'
+#+end_src
+
+#+results:
+: sw/bin/zsh
+
+* Emacs overlay
 https://github.com/yelite/lite-system/issues/2
 
 #+begin_src sh
