@@ -33,14 +33,12 @@ nix run nix-darwin -- --flake "$PWD" build
 [...]
        … while calling anonymous lambda
 
-         at /nix/store/nn17kpb3mlp3kdhi4vm1m71w0m68f1gk-source/lib/modules.nix:242:72:
+         at /nix/store/nn17kpb3mlp3kdhi4vm1m71w0m68f1gk-source/lib/types.nix:541:22:
 
-          241|           # For definitions that have an associated option
-          242|           declaredConfig = mapAttrsRecursiveCond (v: ! isOption v) (_: v: v.value) options;
-             |                                                                        ^
-          243|
-
-       … while evaluating the option `my.home':
+          540|       merge = loc: defs:
+          541|         mapAttrs (n: v: v.value) (filterAttrs (n: v: v ? value) (zipAttrsWith (name: defs:
+             |                      ^
+          542|             (mergeDefinitions (loc ++ [name]) elemType defs).optionalValue
 
        … from call site
 
@@ -60,15 +58,13 @@ nix run nix-darwin -- --flake "$PWD" build
              |                      ^
           763|           (base.extendModules {
 
-       error: The option `my.home.git' does not exist. Definition values:
-       - In `/nix/store/7smjyy7jhci42acqczbm89dkmrm5g5fc-host/max':
+       error: The option `home-manager.users.jcf.my.system' does not exist. Definition values:
+       - In `/nix/store/p6xn9czdx4w0zg4axh2k32gvra5357zq-source/nixos/common.nix':
            {
-             enable = true;
+             zsh = {
+               enable = true;
+             };
            }
-
-       However there are no options defined in `my.home'. Are you sure you've
-       declared your options properly? This can happen if you e.g. declared your options in `types.submodule'
-       under `config' rather than `options'.
 #+end_example
 
 * Emacs overlay
