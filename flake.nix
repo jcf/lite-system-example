@@ -15,7 +15,7 @@
         hostModuleDir = ./host;
 
         hosts = {
-          max = {
+          darwin = {
             system = "aarch64-darwin";
           };
         };
