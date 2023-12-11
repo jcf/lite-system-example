@@ -32,4 +32,12 @@ in
       default = { };
     };
   };
+
+  config = {
+    # Must be set in order to build a multi-user system.
+    services.nix-daemon.enable = true;
+
+    # Without this, we're told attribute '$USER' is missing.
+    users.users.${config.my.username} = { };
+  };
 }
