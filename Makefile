@@ -2,7 +2,7 @@
 .PHONY: check build
 
 check:
-	nix run nix-darwin -- --flake "$(PWD)#darwin" check
+	nix run nix-darwin -- --show-trace --flake "$(PWD)#darwin" check
 
 build:
-	nix run nix-darwin -- --flake "$(PWD)#darwin" build
+	nix run nix-darwin -- --show-trace --flake "$(PWD)#darwin" build
