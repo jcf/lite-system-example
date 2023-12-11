@@ -7,6 +7,8 @@
 - [[#emacs-overlay][Emacs overlay]]
 
 * Home modules
+https://github.com/yelite/lite-system/issues/3
+
 ** Without a custom Home Manager module
 #+begin_src sh
 nix run nix-darwin -- --flake "$PWD" build
