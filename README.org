@@ -67,6 +67,13 @@ nix run nix-darwin -- --flake "$PWD" build
            }
 #+end_example
 
+#+begin_src sh :dir result :exports both
+fd --type executable --follow '^(git|zsh)'
+#+end_src
+
+#+results:
+: sw/bin/zsh
+
 * Emacs overlay
 https://github.com/yelite/lite-system/issues/2
 
