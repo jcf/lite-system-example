@@ -3,7 +3,7 @@
 , ...
 }:
 let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption mkOptionType types;
 in
 {
   imports = [
@@ -23,7 +23,12 @@ in
     };
 
     home = mkOption {
-      type = types.submodule { };
+      type = mkOptionType {
+        name = "my.home";
+        inherit (types.submodule { }) check;
+        merge = lib.options.mergeOneOption;
+        description = "Home Manager configuration passed to home-manager";
+      };
       default = { };
     };
   };
