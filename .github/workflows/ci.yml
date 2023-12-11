@@ -15,4 +15,4 @@ jobs:
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: nix run nix-darwin -- --show-trace --flake "${PWD}#aarch64-darwin" build
+    - run: nix run nix-darwin -- --show-trace --flake "${PWD}#x86_64-darwin" build
