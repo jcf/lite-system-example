@@ -16,3 +16,6 @@ jobs:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
     - run: nix run nix-darwin -- --show-trace --flake "${PWD}#x86-darwin" build
+
+    - run: find result -follow -type f -iname 'git' | grep git
+    - run: find result -follow -type f -iname 'zsh' | grep zsh
