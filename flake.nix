@@ -19,7 +19,7 @@
             system = "aarch64-darwin";
           };
 
-          x86_64-darwin = {
+          x86-darwin = {
             system = "x86_64-darwin";
           };
         };
