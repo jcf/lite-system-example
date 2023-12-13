@@ -1,10 +1,11 @@
 { config
+, osConfig
 , lib
 , ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.my.home.git;
+  cfg = osConfig.my.home.git;
 in
 {
   options.my.home.git = {
